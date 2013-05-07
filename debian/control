@@ -1,0 +1,32 @@
+Source: flumotion-decklink
+Section: net
+Priority: optional
+Maintainer: John Bazik <jsb@cs.brown.edu>
+Build-Depends: cdbs,
+               debhelper (>= 5.0.37.2),
+               pkg-config,
+	       intltool (>= 0.34.2),
+               flumotion (>= 0.10.0)
+Standards-Version: 3.8.1
+XS-Python-Version: >= 2.5
+
+Package: flumotion-decklink
+Architecture: any
+Depends: ${python:Depends},
+         ${misc:Depends},
+         ${shlibs:Depends},
+         adduser,
+         flumotion (>= 0.10.0)
+XB-Python-Version: ${python:Versions}
+Description: Flumotion Blackmagic DeckLink Device Component
+ Flumotion is a modern streaming media server built with a modular
+ distributed design. This gives you unprecedented stability and
+ scalability in offering high-quality streaming media.
+ .
+ Flumotion includes support for both emerging media format standards,
+ such as Ogg/Theora, and traditional formats such as MPEG-4.  It
+ features intuitive graphical administration tools, making the task of
+ setting up and manipulating audio and video streams easy for even
+ novice system administrators.
+ .
+ This package contains a Blackmagic DeckLink device component.

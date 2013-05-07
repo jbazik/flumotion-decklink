@@ -1,0 +1,69 @@
+# shamelessly copied from https://github.com/zaheerm/flumotion-ugly/
+
+# Ignore tarballs
+*.tar.bz2
+*.tar.gz
+
+# Ignore compiled files
+*pyc
+
+# Ignore all the Makefiles
+*Makefile
+*Makefile.in
+
+# Ignore autocrap
+.version
+ABOUT-NLS
+CangeLog.tmp
+ChangeLog.tmp
+INSTALL
+aclocal.m4
+autoregen.sh
+compile
+config.guess
+config.log
+config.rpath
+config.status
+config.sub
+configure
+depcomp
+env
+flu-saved-coverage.pickle
+flumotion-decklink.spec
+install-sh
+intltool-extract
+intltool-merge
+intltool-update
+libtool
+ltmain.sh
+missing
+mkinstalldirs
+py-compile
+
+# Ignore folders
+_trial_coverage/
+autom4te.cache/
+cache/
+flumotion/extern/_trial_temp/
+flumotion/extern/command/.svn/*
+m4/
+locale/
+doc/reference/html/
+
+# Misc ignores - generated files
+flumotion/project/decklink.py
+flumotion/test/setup.py
+misc/setup.py
+
+# Ignore po generated files
+po/Makefile.in.in
+po/POTFILES
+po/Rules-quot
+po/boldquot.sed
+po/en@boldquot.header
+po/en@quot.header
+po/insert-header.sin
+po/quot.sed
+po/remove-potcdate.sin
+po/stamp-it
+po/*gmo

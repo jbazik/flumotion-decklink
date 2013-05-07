@@ -1,0 +1,14 @@
+<registry>
+  <bundles>
+    <bundle name="decklink-checks" project="decklink">
+      <dependencies>
+        <dependency name="worker-checks" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/worker/checks">
+          <filename location="decklink.py" />
+        </directory>
+      </directories>
+    </bundle>
+  </bundles>
+</registry>

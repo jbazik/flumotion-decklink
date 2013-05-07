@@ -1,0 +1,48 @@
+Name:           @PACKAGE@
+Version:        @PACKAGE_VERSION_SPEC@
+Release:        @PACKAGE_VERSION_RELEASE@%{?dist}
+Summary:        Flumotion Blackmagic DeckLink Device support.
+
+Group:          Applications/Internet
+License:        LGPL
+URL:            http://www.fluendo.net/
+Source:         %{name}-%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
+
+Requires:	flumotion >= @FLU_REQ@
+
+BuildRequires:	gettext
+BuildRequires:	python >= 2.3
+BuildRequires:	flumotion >= @FLU_REQ@
+BuildRequires:	epydoc
+BuildRequires:  pkgconfig
+
+%description
+Flumotion Blackmagic DeckLink Device support.
+
+%prep
+%setup -q
+
+%build
+%configure
+
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+make DESTDIR=$RPM_BUILD_ROOT install
+
+%find_lang flumotion-decklink
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files -f flumotion-decklink.lang
+%defattr(-,root,root,-)
+%doc ChangeLog COPYING README AUTHORS
+%{_libdir}/flumotion
+
+%changelog
+* Wed Jun 6 2012 John Bazik <jsb@cs.brown.edu>
+- init

@@ -1,0 +1,92 @@
+<registry>
+  <components>
+    <component type="decklink-producer"
+               base="flumotion/component/producers/decklink"
+               _description="Produces feeds from a BlackMagic Decklink device.">
+      <source location="flumotion.component.producers.decklink.decklink" />
+      <feeder name="audio" />
+      <feeder name="video" />
+
+      <entries>
+        <entry type="component" location="decklink.py"
+               function="Decklink" />
+        <entry type="admin/gtk" location="admin_gtk.py"
+               function="GUIClass" />
+        <entry type="wizard" location="wizard_gtk.py"
+               function="DecklinkWizardPlugin" />
+      </entries>
+
+      <synchronization required="yes" clock-priority="160" />
+
+      <wizard type="audio-producer" _description="BlackMagic Decklink audio"
+              feeder="audio" />
+      <wizard type="video-producer" _description="BlackMagic Decklink video"
+              feeder="video" />
+
+      <properties xmlns:xi="http://www.w3.org/2001/XInclude">
+        <xi:include href="flumotion/component/common/avproducer/properties.xml"/>
+        <property name="device" type="int"
+                  _description="The device number, if multiple cards." />
+        <property name="mode" type="int"
+                  _description="The video input format." />
+        <property name="connection" type="int"
+                  _description="The video input connection." />
+        <property name="audio-input" type="int"
+                  _description="The audio input connection." />
+      </properties>
+    </component>
+  </components>
+  <bundles>
+    <bundle name="decklink-base">
+       <dependencies>
+           <dependency name="component-base" />
+       </dependencies>
+
+       <directories>
+           <directory name="flumotion/component/producers/decklink">
+               <filename location="__init__.py" />
+           </directory>
+       </directories>
+    </bundle>
+
+    <bundle name="decklink-admin-gtk">
+       <dependencies>
+           <dependency name="decklink-base" />
+           <dependency name="avproducer-admin-gtk" />
+       </dependencies>
+       <directories>
+           <directory name="flumotion/component/producers/decklink">
+               <filename location="admin_gtk.py" />
+           </directory>
+       </directories>
+    </bundle>
+
+    <bundle name="decklink-component">
+       <dependencies>
+           <dependency name="decklink-base" />
+           <dependency name="avproducer" />
+       </dependencies>
+
+       <directories>
+           <directory name="flumotion/component/producers/decklink">
+               <filename location="decklink.py" />
+           </directory>
+       </directories>
+    </bundle>
+
+    <bundle name="decklink-wizard">
+        <dependencies>
+            <dependency name="decklink-base" />
+            <dependency name="component" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/decklink">
+                <filename location="wizard.glade" />
+                <filename location="wizard_gtk.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+</registry>

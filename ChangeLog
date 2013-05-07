@@ -1,0 +1,106 @@
+=== release 0.2.0 ===
+
+2006-03-06  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* NEWS:
+	* README:
+	* configure.ac:
+	  releasing 0.2.0
+
+2006-02-28  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* Makefile.am:
+	  use an m4/ dir so that autopoint puts its copied macros there
+	  instead of cluttering up common
+
+2006-01-27  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* flumotion/component/sample/sample.py:
+	* flumotion/component/sample/sample.xml:
+	  update for new component API
+
+2005-12-20  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* flumotion/test/test_sample_admin_gtk.py:
+	  after updating setup.m4, we got errors when trial
+	  was doing from twisted.internet import reactor
+	  in the cleanup phase.  importing it at the top
+	  works around it.
+
+2005-12-20  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* common/setup.m4:
+	  update to register ourselves last
+	  update to take a project name
+	* configure.ac:
+	  add project name to setup call
+
+2005-08-16  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* configure.ac:
+	  use FLUMOTION_SETUP and our spiffy setup.m4
+	* Makefile.am:
+	* flumotion/test/Makefile.am:
+	  clean FLUMOTION_SETUP files
+	* flumotion/test/test_sample_admin_gtk.py:
+	* flumotion/test/test_sample_common.py:
+	  use setup.setup()
+
+2005-08-08  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* configure.ac:
+	  update requirement for flumotion to 0.1.9.1 since we use
+	  translations and projects setup
+
+2005-07-31  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* common/common.mk:
+	  enable coverage again
+	* flumotion/component/sample/Makefile.am:
+	* flumotion/component/sample/common.py:
+	  put common methods to both ui and component here
+	* flumotion/component/sample/sample.py:
+	* flumotion/component/sample/admin_gtk.py:
+	* flumotion/component/sample/sample.xml:
+	  use common
+	* flumotion/test/Makefile.am:
+	* flumotion/test/test_sample_admin_gtk.py:
+	* flumotion/test/test_sample_common.py:
+	  add test for common
+
+2005-07-30  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* flumotion/component/sample/admin_gtk.py:
+	  reuse more of the base class's code
+
+2005-07-29  Michael Smith <msmith at fluendo.com>
+
+	* flumotion/component/sample/admin_gtk.py:
+	  Not finding the locale bundle is a non-fatal error, so that english
+	  works.
+
+2005-07-29  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* Makefile.am:
+	* autogen.sh:
+	* common/Makefile.am:
+	* common/common.mk:
+	* common/gen-locale-xml.py:
+	* common/locale.mk:
+	* configure.ac:
+	* flumotion/component/sample/admin_gtk.py:
+	* flumotion/component/sample/sample.glade:
+	* flumotion/project/Makefile.am:
+	* po/Makevars:
+	* po/POTFILES.in:
+	* po/fr.po:
+	* po/nl.po:
+	  add i18n
+
+2005-07-27  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* flumotion/component/sample/admin_gtk.py:
+	* flumotion/component/sample/sample.glade:
+	  add UI and glade
+	* flumotion/test/setup.py.in:
+	  make good use of os.path.abspath

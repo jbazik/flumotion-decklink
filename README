@@ -1,0 +1,8 @@
+This is a Flumotion producer component for Blackmagic DeckLink devices.
+It is based on the free decklink gstreamer plugin, which is part of
+http://gstreamer.freedesktop.org/modules/gst-plugins-bad.html.
+
+Flumotion (http://www.flumotion.net/) is an open source multimedia
+streaming server.
+
+BlackMagic (http://www.blackmagicdesign.com/) makes video production hardware.

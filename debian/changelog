@@ -1,0 +1,6 @@
+flumotion-decklink (0.10.0-1) unstable; urgency=low
+
+  * Initial release.  Adapted from sample project template and various
+    other components.
+
+ -- John Bazik <jsb@cs.brown.edu>  Wed, 06 Jun 2012 19:14:59 -0400

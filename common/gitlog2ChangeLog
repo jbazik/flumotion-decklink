@@ -1,0 +1,91 @@
+#!/usr/bin/awk -f
+function clean_environment()
+{
+  header = ""
+  commit_msg = ""
+  backport = ""
+  reviewed = ""
+  release_tag = ""
+  file_list = ""
+
+  in_commit = 0
+  in_description = 0
+  in_refs = 0
+  in_files = 0
+}
+function print_commit()
+{
+  if (release_tag)
+    print release_tag
+  if (header)
+    print header
+  if (reviewed)
+    print reviewed
+  if (backport)
+    print backport
+  if (file_list)
+    print file_list
+  if (commit_msg)
+    print commit_msg
+}
+BEGIN {
+  clean_environment()
+}
+/^commit:/ {
+  print_commit()
+  clean_environment()
+  in_commit = 1
+  next
+}
+/^description:/ {
+  in_description = 1
+  in_commit = 0
+  next
+}
+/^refs:/ {
+  in_refs = 1
+  in_description = 0
+}
+/^files:/ {
+  in_refs = 0
+  in_files = 1
+  next
+}
+in_commit == 1 {
+  header = sprintf("%s\n", $0)
+  next
+}
+in_description == 1 {
+  if (/^[Bb]ackport/) {
+    backport = sprintf("\t%s", $0)
+    next
+  }
+  if (/^[Rr]eviewed by/) {
+    reviewed = sprintf("\t%s", $0)
+    next
+  }
+  if (commit_msg)
+    commit_msg = sprintf("%s\t%s\n", commit_msg, $0)
+  else
+    commit_msg = sprintf("\t%s\n", $0)
+  next
+}
+in_refs == 1 {
+  match($0, /[0-9]+\.[0-9]+\.[0-9]+/)
+  if (RSTART)
+    release_tag = sprintf("=== release %s ===\n", substr($0, RSTART, RLENGTH))
+}
+in_files == 1 {
+  if ($0 && ! /ChangeLog/)
+    if (!file_list)
+      if (reviewed || backport)
+        file_list = sprintf("\n\t* %s:", $0)
+      else
+        file_list = sprintf("\t* %s:", $0)
+    else
+      file_list = sprintf("%s\n\t* %s:", file_list, $0)
+  next
+}
+END {
+  print_commit()
+}
