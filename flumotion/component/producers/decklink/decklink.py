@@ -27,7 +27,7 @@ class Decklink(avproducer.AVProducerBase):
     def get_raw_video_element(self):
         return self.pipeline.get_by_name('raw')
 
-    def get_pipeline_template(self):
+    def get_pipeline_template(self, properties):
         return ('decklinksrc name=src subdevice=%s'
                     '      mode=%s connection=%s audio-input=%s '
                     '  src.videosrc ! identity silent=true name=raw ! queue '
@@ -40,6 +40,6 @@ class Decklink(avproducer.AVProducerBase):
 
     def _parse_aditional_properties(self, props):
         self.device = props.get('device', 0)
-        self.mode = props.get('mode', 11)
-        self.connection = props.get('connection', 1)
-        self.audio_input = props.get('audio-input', 1)
+        self.mode = props.get('mode', 10)
+        self.connection = props.get('connection', 0)
+        self.audio_input = props.get('audio-input', 0)
